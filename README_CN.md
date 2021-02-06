@@ -2,38 +2,36 @@
 
 [![Release](https://img.shields.io/badge/Release-v0.0.1-green)]()
 ![Install](https://img.shields.io/badge/Install-SPM-orange)
-![Platform](https://img.shields.io/badge/Platform-macOS%2010.10%20%7C%20iOS%209.0%20%7C%20tvOS%209.0%20%7C%20watchOS%202.0-lightgrey)
+![Platform](https://img.shields.io/badge/Platform-macOS%2010.15%2B%20%7C%20iOS%2013.0%2B%20%7C%20tvOS%2013.0%2B%20%7C%20watchOS%206.0%2B-lightgrey)
 
-[简体中文](https://github.com/KKLater/CombineAsync/blob/main/README_CN.md)
+`OpenCombineAsync` 是基于 `OpenCombine Future` 的封装。其对 `Future`  进行封装，提供 `async` 和 `await` `api`，以优雅的处理异步事件。
 
-`OpenCombineAsync` 'is an encapsulation based on `OpenCombine Future`. It encapsulates `Future` and provides `async` and `await` API to handle asynchronous events gracefully.
+## 必备条件
 
-## Requirements
-
-* macOS 10.10 + / iOS 9.0 + / tvOS 9.0 + / watchOS 2.0 +
+* macOS 10.10+/iOS 9.0+/tvOS 9.0+/watchOS 2.0+
 * Swift 5.0+
 
-If your project is based on the system `Combine` framework, and the project environment is `macOS 10.15 + / iOS 10.0 + / tvOS 10.0 + / watchOS 6.0 + `, then you can choose to use [CombineAsync]( https://github.com/KKLater/CombineAsync ) framework. If your project uses the [CombineX](https://github.com/cx-org/CombineX) framework, you can choose [CombineXAsync](https://github.com/KKLater/CombineXAsync) framework.
+如果你的项目是基于系统 `Combine` 框架，即项目环境为 `macOS 10.15+/iOS 10.0+/tvOS 10.0+/watchOS 6.0+` 那么你可以选择使用 [`CombineAsync`](https://github.com/KKLater/CombineAsync) 框架。如果你的项目采用的是 [`CombineX`](https://github.com/cx-org/CombineX) 框架，那么你可以选择 [`CombineXAsync`](https://github.com/KKLater/CombineXAsync)框架。
 
-## Installation
+
+## 安装
 
 ### Swift Package Manager (SPM)
 
-Swift Package Manager is a tool for managing the distribution of Swift code. It’s integrated with the Swift build system to automate the process of downloading, compiling, and linking dependencies.
+`Swift` 包管理器是一个管理 `Swift` 代码分发的工具。它与 `Swift` 构建系统集成，以自动化下载、编译和链接依赖项的过程。
 
-> Xcode 11+ is required to build `OpenCombineAsync` using Swift Package Manager.
+> 使用 `Swift` 包管理器构建 `OpenCombineAsync` 需要 `Xcode 11+` 以上版本
 
-To integrate `OpenCombineAsync` into your Xcode project using Swift Package Manager, add it to the dependencies value of your `Package.swift`:
-
+要使用 `Swift` 包管理器将 `OpenCombineAsync` 集成到 `Xcode` 项目中，请将其添加到 `Package.swift` 中：
 ```swift
 dependencies: [
-    .package(url: "https://github.com/KKLater/CombineXAsync.git", .upToNextMajor(from: "0.0.1"))
+    .package(url: "https://github.com/KKLater/OpenCombineAsync.git", .upToNextMajor(from: "0.0.1"))
 ]
 ```
 
-## Usage
+## 使用
 
-Asynchronous operations need to be wrapped as `Future` objects of `OpenCombine`.
+异步操作需要包裹成 `OpenCombineAsync` 的 `Future` 对象
 
 ```swift
 func background1() -> Future<Int, Error> {
@@ -64,8 +62,7 @@ func background3(c: Int) -> Future<Int, Error> {
 }
 ```
 
-Before use `async` and  `await` api:
-
+使用 `async` `await` `api` 之前：
 ```swift
 self.background1().sink { (error) in
     print(error)
@@ -81,10 +78,9 @@ self.background1().sink { (error) in
 
     }.store(in: &self.cancels)
 }.store(in: &cancels)
-
 ```
 
-After using the `async` and `await` APIs:
+使用 `async` 和 `await` api 后：
 
 ```swift
 async {
@@ -103,7 +99,4 @@ async {
 
 ## License
 
-`OpenCombineAsync` is released under the `MIT` license. See `LICENSE` for details.
-
-
-
+`OpenCombineAsync` 以 `MIT` 协议发布，查看 `LICENSE` 获取更多信息。
